@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentCard from '../../components/ContentCard.astro';
+
+const collectionDefs = [
+  { name: 'writeups', label: 'Write-ups' },
+  { name: 'labs', label: 'Labs' },
+  { name: 'code', label: 'Code Vault' }
+] as const;
+
+export async function getStaticPaths() {
+  const allEntries: any[] = [];
+
+  for (const collection of collectionDefs) {
+    const entries = await getCollection(collection.name);
+    for (const entry of entries) {
+      if (entry.data.draft) continue;
+      for (const tag of entry.data.tags) {
+        allEntries.push({ tag, entry, collection: collection.name });
+      }
+    }
+  }
+
+  const tags = [...new Set(allEntries.map((item) => item.tag))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      entries: allEntries.filter((item) => item.tag === tag)
+    }
+  }));
+}
+
+const { tag, entries } = Astro.props;
+---
+
+<Layout title={`#${tag} | Kali Cyan Vault`} description={`Entries tagged with ${tag}`}>
+  <section class="page-hero compact">
+    <p class="eyebrow">tag filter</p>
+    <h1>#{tag}</h1>
+    <p>Các nội dung trong vault có cùng tag.</p>
+  </section>
+
+  <section class="content-section">
+    <SectionHeader title="Tagged entries" description={`${entries.length} result(s) found.`} />
+    <div class="card-grid">
+      {entries.map(({ entry, collection }) => <ContentCard entry={entry} collection={collection} />)}
+    </div>
+  </section>
+</Layout>

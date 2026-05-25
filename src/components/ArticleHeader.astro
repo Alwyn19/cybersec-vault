@@ -1,0 +1,23 @@
+---
+import TagPill from './TagPill.astro';
+import { difficultyLabel, formatDate } from '../lib/format';
+
+interface Props {
+  entry: any;
+  label: string;
+}
+const { entry, label } = Astro.props;
+---
+
+<header class="article-header">
+  <p class="eyebrow">{label}</p>
+  <h1>{entry.data.title}</h1>
+  <p class="article-description">{entry.data.description}</p>
+  <div class="article-meta">
+    <span>{formatDate(entry.data.date)}</span>
+    <span>{difficultyLabel(entry.data.difficulty)}</span>
+  </div>
+  <div class="tag-list large">
+    {entry.data.tags.map((tag: string) => <TagPill tag={tag} />)}
+  </div>
+</header>

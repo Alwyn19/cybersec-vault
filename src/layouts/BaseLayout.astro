@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Kali Cyan Vault',
+  description = 'Kali-inspired neon cyan cybersec write-ups, labs, code snippets, and CTF notes.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#02050a" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="grid-glow" aria-hidden="true"></div>
+    <Header />
+    <main class="site-shell">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>Built for legal CTF learning. </p>
+      <p class="footer-dim">Never publish real secrets, tokens, private keys, or unauthorized exploit details.</p>
+    </footer>
+  </body>
+</html>

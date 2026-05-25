@@ -1,0 +1,17 @@
+<div class="search-box">
+  <label for="archive-search">Search vault</label>
+  <input id="archive-search" data-search type="search" placeholder="Search by title, summary, tag..." autocomplete="off" />
+</div>
+
+<script>
+  const input = document.querySelector('[data-search]');
+  const cards = [...document.querySelectorAll('[data-card]')];
+
+  input?.addEventListener('input', () => {
+    const query = input.value.toLowerCase().trim();
+    for (const card of cards) {
+      const haystack = `${card.dataset.title ?? ''} ${card.dataset.summary ?? ''} ${card.dataset.tags ?? ''}`;
+      card.hidden = query.length > 0 && !haystack.includes(query);
+    }
+  });
+</script>

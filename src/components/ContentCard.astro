@@ -1,0 +1,40 @@
+---
+import TagPill from './TagPill.astro';
+import { difficultyLabel, formatDate } from '../lib/format';
+
+interface Props {
+  entry: any;
+  collection: 'writeups' | 'labs' | 'code';
+}
+
+const { entry, collection } = Astro.props;
+const href = `${import.meta.env.BASE_URL}${collection}/${entry.slug}/`;
+const data = entry.data;
+const meta = collection === 'writeups'
+  ? data.category
+  : collection === 'labs'
+    ? data.area
+    : data.language;
+---
+
+<article
+  class="content-card"
+  data-card
+  data-title={data.title.toLowerCase()}
+  data-summary={data.description.toLowerCase()}
+  data-tags={data.tags.join(' ').toLowerCase()}
+>
+  <div class="card-topline">
+    <span>{collection}</span>
+    <span>{formatDate(data.date)}</span>
+  </div>
+  <h3><a href={href}>{data.title}</a></h3>
+  <p>{data.description}</p>
+  <div class="card-meta">
+    <span class="badge">{meta}</span>
+    <span class="badge muted">{difficultyLabel(data.difficulty)}</span>
+  </div>
+  <div class="tag-list">
+    {data.tags.map((tag: string) => <TagPill tag={tag} />)}
+  </div>
+</article>

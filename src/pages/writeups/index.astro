@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentCard from '../../components/ContentCard.astro';
+import SearchBox from '../../components/SearchBox.astro';
+
+const entries = (await getCollection('writeups'))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="CTF Write-ups | Kali Cyan Vault" description="Phân tích challenge, bug, exploit reasoning và bài học rút ra.">
+  <section class="page-hero compact">
+    <p class="eyebrow">write-up archive</p>
+    <h1>CTF Write-ups</h1>
+    <p>Phân tích challenge, bug, exploit reasoning và bài học rút ra.</p>
+  </section>
+
+  <SearchBox />
+
+  <section class="content-section">
+    <SectionHeader title="All entries" description="Dùng ô search để lọc theo tiêu đề, tag hoặc mô tả." />
+    <div class="card-grid">
+      {entries.map((entry) => <ContentCard entry={entry} collection="writeups" />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,19 @@
+{
+  "name": "cybersec-vault",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "new:writeup": "node scripts/new-content.mjs writeups",
+    "new:lab": "node scripts/new-content.mjs labs",
+    "new:code": "node scripts/new-content.mjs code"
+  },
+  "dependencies": {
+    "astro": "^5.13.0"
+  },
+  "devDependencies": {}
+}

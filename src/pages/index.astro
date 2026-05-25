@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/BaseLayout.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ContentCard from '../components/ContentCard.astro';
+
+const byDateDesc = (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf();
+const writeups = (await getCollection('writeups')).filter((e) => !e.data.draft).sort(byDateDesc);
+const labs = (await getCollection('labs')).filter((e) => !e.data.draft).sort(byDateDesc);
+const code = (await getCollection('code')).filter((e) => !e.data.draft).sort(byDateDesc);
+const latest = [
+  ...writeups.slice(0, 3).map((entry) => ({ entry, collection: 'writeups' as const })),
+  ...labs.slice(0, 2).map((entry) => ({ entry, collection: 'labs' as const })),
+  ...code.slice(0, 2).map((entry) => ({ entry, collection: 'code' as const }))
+].sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf()).slice(0, 6);
+---
+
+<Layout>
+  <HeroTerminal />
+
+  <section class="stats-grid" aria-label="vault stats">
+    <div class="stat-card"><strong>{writeups.length}</strong><span>write-ups</span></div>
+    <div class="stat-card"><strong>{labs.length}</strong><span>labs</span></div>
+    <div class="stat-card"><strong>{code.length}</strong><span>code notes</span></div>
+    <div class="stat-card"><strong>Git</strong><span>push-to-publish</span></div>
+  </section>
+
+  <section class="content-section">
+    <SectionHeader
+      eyebrow="latest entries"
+      title="Recently published"
+      description="Các bài mới nhất trong vault: write-up, lab note, payload hoặc snippet."
+      href={`${import.meta.env.BASE_URL}writeups/`}
+      action="View archive"
+    />
+    <div class="card-grid">
+      {latest.map(({ entry, collection }) => <ContentCard entry={entry} collection={collection} />)}
+    </div>
+  </section>
+
+  <section class="content-section split-panel">
+    <div>
+      <p class="eyebrow">workflow</p>
+      <h2>Push like Git. Publish like a vault.</h2>
+    </div>
+    <pre class="mini-terminal"><code>kali㉿vault:~$ npm run new:writeup -- "SQLi login bypass"
+kali㉿vault:~$ git add .
+kali㉿vault:~$ git commit -m "add sqli writeup"
+kali㉿vault:~$ git push origin main</code></pre>
+  </section>
+</Layout>
