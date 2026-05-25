@@ -8,7 +8,9 @@ interface Props {
 }
 
 const { entry, collection } = Astro.props;
-const href = `${import.meta.env.BASE_URL}${collection}/${entry.slug}/`;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+const href = `${base}${collection}/${entry.slug}/`;
 const data = entry.data;
 const meta = collection === 'writeups'
   ? data.category

@@ -3,7 +3,9 @@ interface Props {
   tag: string;
 }
 const { tag } = Astro.props;
-const href = `${import.meta.env.BASE_URL}tags/${encodeURIComponent(tag)}/`;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+const href = `${base}tags/${encodeURIComponent(tag)}/`;
 ---
 
 <a class="tag-pill" href={href}>#{tag}</a>
