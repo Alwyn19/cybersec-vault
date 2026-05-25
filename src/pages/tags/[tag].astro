@@ -4,21 +4,24 @@ import Layout from '../../layouts/BaseLayout.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import ContentCard from '../../components/ContentCard.astro';
 
-const collectionDefs = [
-  { name: 'writeups', label: 'Write-ups' },
-  { name: 'labs', label: 'Labs' },
-  { name: 'code', label: 'Code Vault' }
-] as const;
-
 export async function getStaticPaths() {
+  const collections = ['writeups', 'labs', 'code'] as const;
   const allEntries: any[] = [];
 
-  for (const collection of collectionDefs) {
-    const entries = await getCollection(collection.name);
+  for (const collection of collections) {
+    const entries = await getCollection(collection);
+
     for (const entry of entries) {
       if (entry.data.draft) continue;
-      for (const tag of entry.data.tags) {
-        allEntries.push({ tag, entry, collection: collection.name });
+
+      const tags = entry.data.tags ?? [];
+
+      for (const tag of tags) {
+        allEntries.push({
+          tag,
+          entry,
+          collection
+        });
       }
     }
   }
@@ -37,7 +40,7 @@ export async function getStaticPaths() {
 const { tag, entries } = Astro.props;
 ---
 
-<Layout title={`#${tag} | Kali Cyan Vault`} description={`Entries tagged with ${tag}`}>
+<Layout title={`#${tag} | CyberSec Vault`} description={`Entries tagged with ${tag}`}>
   <section class="page-hero compact">
     <p class="eyebrow">tag filter</p>
     <h1>#{tag}</h1>
@@ -46,8 +49,11 @@ const { tag, entries } = Astro.props;
 
   <section class="content-section">
     <SectionHeader title="Tagged entries" description={`${entries.length} result(s) found.`} />
+
     <div class="card-grid">
-      {entries.map(({ entry, collection }) => <ContentCard entry={entry} collection={collection} />)}
+      {entries.map(({ entry, collection }) => (
+        <ContentCard entry={entry} collection={collection} />
+      ))}
     </div>
   </section>
 </Layout>
