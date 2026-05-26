@@ -5,17 +5,22 @@ import HeroTerminal from '../components/HeroTerminal.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ContentCard from '../components/ContentCard.astro';
 
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 const byDateDesc = (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf();
-const writeups = (await getCollection('writeups')).filter((e) => !e.data.draft).sort(byDateDesc);
-const labs = (await getCollection('labs')).filter((e) => !e.data.draft).sort(byDateDesc);
-const code = (await getCollection('code')).filter((e) => !e.data.draft).sort(byDateDesc);
+
+const writeups = (await getCollection('writeups'))
+  .filter((e) => !e.data.draft)
+  .sort(byDateDesc);
+
+const labs = (await getCollection('labs'))
+  .filter((e) => !e.data.draft)
+  .sort(byDateDesc);
+
 const latest = [
   ...writeups.slice(0, 3).map((entry) => ({ entry, collection: 'writeups' as const })),
-  ...labs.slice(0, 2).map((entry) => ({ entry, collection: 'labs' as const })),
-  ...code.slice(0, 2).map((entry) => ({ entry, collection: 'code' as const }))
-].sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf()).slice(0, 6);
+  ...labs.slice(0, 3).map((entry) => ({ entry, collection: 'labs' as const }))
+]
+  .sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf())
+  .slice(0, 6);
 ---
 
 <Layout>
@@ -24,7 +29,7 @@ const latest = [
   <section class="stats-grid" aria-label="vault stats">
     <div class="stat-card"><strong>{writeups.length}</strong><span>write-ups</span></div>
     <div class="stat-card"><strong>{labs.length}</strong><span>labs</span></div>
-    <div class="stat-card"><strong>{code.length}</strong><span>code notes</span></div>
+    <div class="stat-card"><strong>Web</strong><span>security notes</span></div>
     <div class="stat-card"><strong>Git</strong><span>push-to-publish</span></div>
   </section>
 
@@ -32,10 +37,9 @@ const latest = [
     <SectionHeader
       eyebrow="latest entries"
       title="Recently published"
-      description="Recent vault entries: write-ups, lab notes, payloads, and code snippets."
-      href={`${base}writeups/`}
-      action=""
+      description="Recent vault entries: write-ups and lab notes."
     />
+
     <div class="card-grid">
       {latest.map(({ entry, collection }) => <ContentCard entry={entry} collection={collection} />)}
     </div>

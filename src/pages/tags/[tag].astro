@@ -5,7 +5,7 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import ContentCard from '../../components/ContentCard.astro';
 
 export async function getStaticPaths() {
-  const collections = ['writeups', 'labs', 'code'] as const;
+  const collections = ['writeups', 'labs'] as const;
   const allEntries: any[] = [];
 
   for (const collection of collections) {
