@@ -30,9 +30,9 @@ const latest = [
     <SectionHeader
       eyebrow="latest entries"
       title="Recently published"
-      description="Các bài mới nhất trong vault: write-up, lab note, payload hoặc snippet."
+      description="Recent vault entries: write-ups, lab notes, payloads, and code snippets."
       href={`${import.meta.env.BASE_URL}writeups/`}
-      action="View archive"
+      action=""
     />
     <div class="card-grid">
       {latest.map(({ entry, collection }) => <ContentCard entry={entry} collection={collection} />)}
@@ -44,9 +44,9 @@ const latest = [
       <p class="eyebrow">workflow</p>
       <h2>Push like Git. Publish like a vault.</h2>
     </div>
-    <pre class="mini-terminal"><code>kali㉿vault:~$ npm run new:writeup -- "SQLi login bypass"
-kali㉿vault:~$ git add .
-kali㉿vault:~$ git commit -m "add sqli writeup"
-kali㉿vault:~$ git push origin main</code></pre>
+    <pre class="mini-terminal"><code>Alwyn@Cybersec:~$ npm run new:writeup -- "SQLi login bypass"
+Alwyn@Cybersec:~$ git add .
+Alwyn@Cybersec:~$ git commit -m "add sqli writeup"
+Alwyn@Cybersec:~$ git push origin main</code></pre>
   </section>
 </Layout>

@@ -10,17 +10,17 @@ const entries = (await getCollection('writeups'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="CTF Write-ups | Kali Cyan Vault" description="Phân tích challenge, bug, exploit reasoning và bài học rút ra.">
+<Layout title="CTF Write-ups | Kali Cyan Vault" description="Documented challenge analysis, vulnerability research, exploit reasoning, and lessons learned.">
   <section class="page-hero compact">
     <p class="eyebrow">write-up archive</p>
     <h1>CTF Write-ups</h1>
-    <p>Phân tích challenge, bug, exploit reasoning và bài học rút ra.</p>
+    <p>Documented challenge analysis, vulnerability research, exploit reasoning, and lessons learned.</p>
   </section>
 
   <SearchBox />
 
   <section class="content-section">
-    <SectionHeader title="All entries" description="Dùng ô search để lọc theo tiêu đề, tag hoặc mô tả." />
+    <SectionHeader title="All entries" description="Search by title, tags, or description to quickly find relevant notes." />
     <div class="card-grid">
       {entries.map((entry) => <ContentCard entry={entry} collection="writeups" />)}
     </div>

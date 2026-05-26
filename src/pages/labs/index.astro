@@ -10,17 +10,17 @@ const entries = (await getCollection('labs'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="Security Labs | Kali Cyan Vault" description="Lab tự học, checklist, hint và solution cho các chủ đề Web/AppSec.">
+<Layout title="Security Labs | Kali Cyan Vault" description="Self-study labs, checklists, hints, and solutions focused on Web Security and AppSec.">
   <section class="page-hero compact">
     <p class="eyebrow">lab archive</p>
     <h1>Security Labs</h1>
-    <p>Lab tự học, checklist, hint và solution cho các chủ đề Web/AppSec.</p>
+    <p>Self-study labs, checklists, hints, and solutions focused on Web Security and AppSec.</p>
   </section>
 
   <SearchBox />
 
   <section class="content-section">
-    <SectionHeader title="All entries" description="Dùng ô search để lọc theo tiêu đề, tag hoặc mô tả." />
+    <SectionHeader title="All entries" description="Search by title, tags, or description to quickly find relevant notes." />
     <div class="card-grid">
       {entries.map((entry) => <ContentCard entry={entry} collection="labs" />)}
     </div>
