@@ -9,8 +9,9 @@ platform: DreamHack
 solved: true
 ---
 
-# sql injection bypass WAF Advanced
+## sql injection bypass WAF Advanced
 ![image](/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-01.png)
+
 ![image](/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-02.png)
 
 - Đọc source code thấy được bị cấm một số từ khóa như `union`, `select`, `and`, `or` nên không thể dùng `union` để lấy flag.
