@@ -670,3 +670,54 @@ h3 { font-size: 1.35rem; }
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(255, 23, 68, 0.8));
 }
+@property --neon-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes neon-border-spin {
+  to {
+    --neon-angle: 360deg;
+  }
+}
+
+@keyframes neon-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 18px rgba(255, 94, 0, 0.22),
+      0 0 42px rgba(255, 42, 0, 0.16);
+  }
+
+  50% {
+    box-shadow:
+      0 0 28px rgba(255, 94, 0, 0.5),
+      0 0 80px rgba(255, 42, 0, 0.28);
+  }
+}
+
+.terminal-window,
+.content-card,
+.stat-card,
+.article-shell,
+.search-box,
+.split-panel {
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(180deg, rgba(16, 5, 3, 0.96), rgba(7, 2, 1, 0.86)) padding-box,
+    conic-gradient(
+      from var(--neon-angle),
+      transparent 0deg,
+      transparent 45deg,
+      rgba(255, 94, 0, 0.95) 90deg,
+      rgba(255, 154, 61, 1) 120deg,
+      rgba(255, 42, 0, 0.95) 150deg,
+      transparent 210deg,
+      transparent 360deg
+    ) border-box;
+
+  animation:
+    neon-border-spin 4s linear infinite,
+    neon-glow-pulse 2.8s ease-in-out infinite;
+}
