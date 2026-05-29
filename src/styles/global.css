@@ -52,7 +52,7 @@ body::before {
 }
 
 body::after {
-  content: "ALWYN // RED OPS";
+  content: "Hacking....";
   position: fixed;
   right: -6rem;
   bottom: 8rem;
