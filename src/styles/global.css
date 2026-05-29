@@ -1,22 +1,22 @@
 :root {
   color-scheme: dark;
-  --bg: #02050a;
-  --bg-soft: #050b12;
-  --panel: rgba(3, 16, 26, 0.82);
-  --panel-strong: rgba(3, 24, 38, 0.94);
-  --line: rgba(0, 229, 255, 0.24);
-  --line-strong: rgba(0, 229, 255, 0.56);
-  --text: #d8fbff;
-  --muted: #7fb9c5;
-  --dim: #4c7680;
-  --cyan: #00e5ff;
-  --cyan-soft: #4df7ff;
-  --blue: #2f8cff;
-  --violet: #7c3cff;
-  --green: #4dffb5;
-  --red: #ff4f7b;
+  --bg: #080105;
+  --bg-soft: #12040a;
+  --panel: rgba(26, 3, 10, 0.82);
+  --panel-strong: rgba(38, 4, 14, 0.94);
+  --line: rgba(255, 23, 68, 0.24);
+  --line-strong: rgba(255, 23, 68, 0.56);
+  --text: #ffe8ee;
+  --muted: #d49aa8;
+  --dim: #87525f;
+  --cyan: #ff1744;
+  --cyan-soft: #ff4d6d;
+  --blue: #ff003c;
+  --violet: #b00020;
+  --green: #ff8a80;
+  --red: #ff1744;
   --yellow: #ffd166;
-  --shadow: 0 24px 90px rgba(0, 229, 255, 0.18);
+  --shadow: 0 24px 90px rgba(255, 23, 68, 0.18);
   --radius: 22px;
   --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -28,10 +28,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.22), transparent 26rem),
-    radial-gradient(circle at 88% 18%, rgba(47, 140, 255, 0.2), transparent 30rem),
-    radial-gradient(circle at 52% 82%, rgba(124, 60, 255, 0.11), transparent 32rem),
-    linear-gradient(180deg, #02050a 0%, #04101a 48%, #02050a 100%);
+    radial-gradient(circle at 12% 8%, rgba(255, 23, 68, 0.22), transparent 26rem),
+    radial-gradient(circle at 88% 18%, rgba(255, 0, 60, 0.2), transparent 30rem),
+    radial-gradient(circle at 52% 82%, rgba(180, 0, 40, 0.11), transparent 32rem),
+    linear-gradient(180deg, #080105 0%, #13040a 48%, #080105 100%);
   color: var(--text);
   font-family: var(--sans);
   line-height: 1.6;
@@ -44,20 +44,20 @@ body::before {
   inset: 0;
   z-index: -3;
   background-image:
-    linear-gradient(rgba(0, 229, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(120deg, transparent 0 47%, rgba(77, 247, 255, 0.028) 49% 51%, transparent 53% 100%);
+    linear-gradient(rgba(255, 23, 68, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 23, 68, 0.055) 1px, transparent 1px),
+    linear-gradient(120deg, transparent 0 47%, rgba(255, 77, 109, 0.028) 49% 51%, transparent 53% 100%);
   background-size: 44px 44px, 44px 44px, 120px 120px;
   mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
 
 body::after {
-  content: "KALI // CYAN OPS";
+  content: "ALWYN // RED OPS";
   position: fixed;
   right: -6rem;
   bottom: 8rem;
   z-index: -2;
-  color: rgba(0, 229, 255, 0.045);
+  color: rgba(255, 23, 68, 0.045);
   font-family: var(--mono);
   font-size: clamp(4rem, 13vw, 11rem);
   font-weight: 900;
@@ -78,7 +78,7 @@ img { max-width: 100%; height: auto; }
   z-index: 50;
   background:
     linear-gradient(rgba(255,255,255,0.025) 50%, transparent 50%),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.02), transparent 18%, transparent 82%, rgba(0, 229, 255, 0.02));
+    linear-gradient(90deg, rgba(255, 23, 68, 0.02), transparent 18%, transparent 82%, rgba(255, 23, 68, 0.02));
   background-size: 100% 4px, 100% 100%;
   mix-blend-mode: overlay;
   opacity: 0.36;
@@ -93,7 +93,7 @@ img { max-width: 100%; height: auto; }
   top: 12%;
   z-index: -2;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.21), transparent 66%);
+  background: radial-gradient(circle, rgba(255, 23, 68, 0.21), transparent 66%);
   filter: blur(12px);
 }
 
@@ -118,7 +118,7 @@ img { max-width: 100%; height: auto; }
   right: 0;
   bottom: 0.35rem;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.45), transparent);
   pointer-events: none;
 }
 
@@ -138,11 +138,11 @@ img { max-width: 100%; height: auto; }
   height: 2.55rem;
   border: 1px solid var(--line-strong);
   border-radius: 14px;
-  color: #001219;
+  color: #1a0007;
   background:
     linear-gradient(135deg, var(--cyan), var(--blue));
   box-shadow:
-    0 0 32px rgba(0, 229, 255, 0.36),
+    0 0 32px rgba(255, 23, 68, 0.36),
     inset 0 0 18px rgba(255,255,255,0.18);
   text-shadow: none;
 }
@@ -171,8 +171,8 @@ img { max-width: 100%; height: auto; }
 .nav-links a.active {
   color: var(--cyan-soft);
   border-color: var(--line);
-  background: rgba(0, 229, 255, 0.08);
-  box-shadow: 0 0 24px rgba(0, 229, 255, 0.12);
+  background: rgba(255, 23, 68, 0.08);
+  box-shadow: 0 0 24px rgba(255, 23, 68, 0.12);
 }
 
 .site-shell {
@@ -197,7 +197,7 @@ img { max-width: 100%; height: auto; }
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-shadow: 0 0 18px rgba(0, 229, 255, 0.42);
+  text-shadow: 0 0 18px rgba(255, 23, 68, 0.42);
 }
 
 h1, h2, h3 {
@@ -209,13 +209,13 @@ h1, h2, h3 {
 h1 {
   max-width: 11ch;
   font-size: clamp(3rem, 8vw, 6.8rem);
-  text-shadow: 0 0 34px rgba(0, 229, 255, 0.18);
+  text-shadow: 0 0 34px rgba(255, 23, 68, 0.18);
 }
 
 h1 .accent,
 h2 .accent {
   color: var(--cyan);
-  text-shadow: 0 0 30px rgba(0, 229, 255, 0.42);
+  text-shadow: 0 0 30px rgba(255, 23, 68, 0.42);
 }
 
 h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
@@ -254,14 +254,14 @@ h3 { font-size: 1.35rem; }
 .button:hover { transform: translateY(-1px); }
 
 .button.primary {
-  color: #001219;
+  color: #1a0007;
   background: linear-gradient(135deg, var(--cyan), var(--blue));
-  box-shadow: 0 0 38px rgba(0, 229, 255, 0.28);
+  box-shadow: 0 0 38px rgba(255, 23, 68, 0.28);
 }
 
 .button.ghost {
   color: var(--text);
-  background: rgba(0, 229, 255, 0.045);
+  background: rgba(255, 23, 68, 0.045);
 }
 
 .terminal-window,
@@ -274,7 +274,7 @@ h3 { font-size: 1.35rem; }
   border: 1px solid var(--line);
   background:
     linear-gradient(180deg, rgba(3, 17, 28, 0.96), rgba(2, 7, 12, 0.78)),
-    radial-gradient(circle at 18% 0%, rgba(0, 229, 255, 0.12), transparent 42%);
+    radial-gradient(circle at 18% 0%, rgba(255, 23, 68, 0.12), transparent 42%);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -292,7 +292,7 @@ h3 { font-size: 1.35rem; }
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1px solid rgba(77, 247, 255, 0.08);
+  border: 1px solid rgba(255, 77, 109, 0.08);
   pointer-events: none;
 }
 
@@ -301,7 +301,7 @@ h3 { font-size: 1.35rem; }
   position: absolute;
   right: 1rem;
   bottom: -0.3rem;
-  color: rgba(0, 229, 255, 0.09);
+  color: rgba(255, 23, 68, 0.09);
   font-family: var(--mono);
   font-size: 8rem;
   line-height: 1;
@@ -337,13 +337,13 @@ h3 { font-size: 1.35rem; }
   margin: 0;
   padding: 1.25rem;
   overflow-x: auto;
-  color: #d9fbff;
+  color: #ffe8ee;
   font-family: var(--mono);
   font-size: 0.92rem;
 }
 
 .prompt { color: var(--cyan); font-weight: 900; }
-.kali-ascii { color: rgba(0, 229, 255, 0.72); }
+.kali-ascii { color: rgba(255, 23, 68, 0.72); }
 
 .stats-grid {
   display: grid;
@@ -373,7 +373,7 @@ h3 { font-size: 1.35rem; }
   font-family: var(--mono);
   font-size: 2rem;
   line-height: 1;
-  text-shadow: 0 0 24px rgba(0, 229, 255, 0.38);
+  text-shadow: 0 0 24px rgba(255, 23, 68, 0.38);
 }
 
 .stat-card span { color: var(--muted); }
@@ -415,15 +415,15 @@ h3 { font-size: 1.35rem; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 0%, rgba(0, 229, 255, 0.15), transparent 36%),
-    linear-gradient(135deg, rgba(0, 229, 255, 0.035), transparent 40%);
+    radial-gradient(circle at 20% 0%, rgba(255, 23, 68, 0.15), transparent 36%),
+    linear-gradient(135deg, rgba(255, 23, 68, 0.035), transparent 40%);
   pointer-events: none;
 }
 
 .content-card:hover {
   border-color: var(--line-strong);
   transform: translateY(-2px);
-  box-shadow: 0 26px 100px rgba(0, 229, 255, 0.24);
+  box-shadow: 0 26px 100px rgba(255, 23, 68, 0.24);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
@@ -460,7 +460,7 @@ h3 { font-size: 1.35rem; }
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--cyan);
-  background: rgba(0, 229, 255, 0.07);
+  background: rgba(255, 23, 68, 0.07);
   font-family: var(--mono);
   font-size: 0.78rem;
 }
@@ -480,10 +480,10 @@ h3 { font-size: 1.35rem; }
 .tag-pill {
   display: inline-flex;
   padding: 0.22rem 0.55rem;
-  border: 1px solid rgba(0, 229, 255, 0.28);
+  border: 1px solid rgba(255, 23, 68, 0.28);
   border-radius: 999px;
   color: var(--cyan-soft);
-  background: rgba(0, 229, 255, 0.07);
+  background: rgba(255, 23, 68, 0.07);
   font-family: var(--mono);
   font-size: 0.78rem;
 }
@@ -516,13 +516,13 @@ h3 { font-size: 1.35rem; }
   border-radius: 14px;
   outline: none;
   color: var(--text);
-  background: rgba(0, 229, 255, 0.045);
+  background: rgba(255, 23, 68, 0.045);
   font: inherit;
 }
 
 .search-box input:focus {
   border-color: var(--cyan);
-  box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(255, 23, 68, 0.12);
 }
 
 .split-panel {
@@ -566,7 +566,7 @@ h3 { font-size: 1.35rem; }
 }
 
 .prose {
-  color: #d8fbff;
+  color: #ffe8ee;
   font-size: 1rem;
 }
 .prose h2 { margin-top: 2.2rem; font-size: 2rem; }
@@ -578,7 +578,7 @@ h3 { font-size: 1.35rem; }
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--cyan-soft);
-  background: rgba(0, 229, 255, 0.08);
+  background: rgba(255, 23, 68, 0.08);
   font-family: var(--mono);
 }
 .prose pre {
@@ -586,7 +586,7 @@ h3 { font-size: 1.35rem; }
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: #02070d !important;
+  background: #0b0206 !important;
 }
 .prose pre code {
   padding: 0;
@@ -598,7 +598,7 @@ h3 { font-size: 1.35rem; }
   margin-left: 0;
   padding: 0.8rem 1rem;
   border-left: 3px solid var(--cyan);
-  background: rgba(0, 229, 255, 0.07);
+  background: rgba(255, 23, 68, 0.07);
   color: var(--muted);
 }
 .prose table {
@@ -611,12 +611,12 @@ h3 { font-size: 1.35rem; }
   border: 1px solid var(--line);
   padding: 0.65rem;
 }
-.prose th { color: var(--cyan); background: rgba(0, 229, 255, 0.08); }
+.prose th { color: var(--cyan); background: rgba(255, 23, 68, 0.08); }
 .prose details {
   padding: 0.8rem 1rem;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(0, 229, 255, 0.04);
+  background: rgba(255, 23, 68, 0.04);
 }
 .prose summary {
   cursor: pointer;
