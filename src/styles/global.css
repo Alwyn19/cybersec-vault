@@ -52,7 +52,7 @@ body::before {
 }
 
 body::after {
-  content: "Hacking....";
+  content: "Hacking....!!!!!";
   position: fixed;
   right: -6rem;
   bottom: 8rem;
@@ -297,7 +297,7 @@ h3 { font-size: 1.35rem; }
 }
 
 .terminal-window::after {
-  content: "👑";
+  content: "♛";
   position: absolute;
   right: 1rem;
   bottom: -0.3rem;
