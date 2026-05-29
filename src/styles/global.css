@@ -297,7 +297,7 @@ h3 { font-size: 1.35rem; }
 }
 
 .terminal-window::after {
-  content: "㉿";
+  content: "👑";
   position: absolute;
   right: 1rem;
   bottom: -0.3rem;
