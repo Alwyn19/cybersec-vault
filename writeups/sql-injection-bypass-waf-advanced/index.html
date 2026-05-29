@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="vi"> <head><meta charset="UTF-8"><meta name="description" content="SQL injection trong form search uid của lab/CTF."><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#02050a"><link rel="icon" type="image/svg+xml" href="/cybersec-vaultfavicon.svg"><title>sql injection bypass WAF Advanced | Kali Cyan Vault</title><link rel="stylesheet" href="/cybersec-vault/_astro/index.lprI1yvS.css"></head> <body> <div class="scanline" aria-hidden="true"></div> <div class="grid-glow" aria-hidden="true"></div> <header class="site-header"> <a class="brand" href="/cybersec-vault/" aria-label="Kali Cyan Vault home"> <img class="brand-logo" src="/cybersec-vault/images/logo.png" alt="Alwyn logo"> <span class="brand-text"><strong>Alwyn</strong> CyberSec</span> </a> <nav class="nav-links" aria-label="Primary navigation"> <a href="/cybersec-vault/">Home</a><a href="/cybersec-vault/writeups/" class="active">Write-ups</a><a href="/cybersec-vault/labs/">Labs</a> </nav> </header> <main class="site-shell">  <article class="article-shell"> <header class="article-header"> <p class="eyebrow">ctf write-up</p> <h1>sql injection bypass WAF Advanced</h1> <p class="article-description">SQL injection trong form search uid của lab/CTF.</p> <div class="article-meta"> <span>24/05/2026</span> <span>Easy</span> </div> <div class="tag-list large"> <a class="tag-pill" href="/cybersec-vault/tags/web/">#web</a><a class="tag-pill" href="/cybersec-vault/tags/sqli/">#sqli</a><a class="tag-pill" href="/cybersec-vault/tags/auth/">#auth</a><a class="tag-pill" href="/cybersec-vault/tags/ctf/">#ctf</a> </div> </header> <div class="prose"> <h2 id="sql-injection-bypass-waf-advanced">sql injection bypass WAF Advanced</h2>
+<p><img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-01.png" alt="image"></p>
+<p><img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-02.png" alt="image"></p>
+<ul>
+<li>
+<p>Đọc source code thấy được bị cấm một số từ khóa như <code>union</code>, <code>select</code>, <code>and</code>, <code>or</code> nên không thể dùng <code>union</code> để lấy flag.</p>
+</li>
+<li>
+<p>Thử qua một số payload thấy trình duyệt trả về <code>uid</code> hoặc rỗng -> có thể là <code>blind</code>.</p>
+</li>
+<li>
+<p>Dùng hàm <code>substring</code> để test qua một số trường hợp. Thấy được khi cắt chuỗi <code>uid</code> thì output là những <code>uid</code> trong database trừ <code>admin</code> do có <code>abcde</code> xếp trước.
+<img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-03.png" alt="image"></p>
+</li>
+<li>
+<p>Nên ta thử cắt chuỗi <code>upw</code> thì nó sẽ trả về <code>admin</code> nếu chuỗi cắt ra là kí tự trùng với <code>upw</code> của <code>admin</code>.
+<img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-04.png" alt="image"></p>
+</li>
+<li>
+<p>Sau khi có được payload, bỏ qua <code>intruder</code> để chạy và lấy ra những response trả về <code>admin</code>.</p>
+</li>
+</ul>
+<p><img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-05.png" alt="image"></p>
+<ul>
+<li>
+<p>Sắp xếp lại ta được flag.</p>
+</li>
+<li>
+<p>Hoặc viết script để lấy flag.
+<img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-06.png" alt="image"></p>
+</li>
+<li>
+<p>Ghi flag vào file.
+<img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-07.png" alt="image"></p>
+</li>
+<li>
+<p>flag:<code>DH{d3def39496c4153942f3f7d5451a4b98c6db1664}</code>.
+<img src="/cybersec-vault/images/writeups/sql-injection-bypass-waf-advanced/image-08.png" alt="image"></p>
+</li>
+</ul> </div> </article>  </main> <footer class="site-footer"> <p>Built for legal CTF learning. </p> <p class="footer-dim">Never publish real secrets, tokens, private keys, or unauthorized exploit details.</p> </footer> </body></html>
